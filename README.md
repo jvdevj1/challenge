@@ -37,3 +37,31 @@ Bonus
 4) Correr pruebas con base de datos en memoria.
 
 5) Calcular la cobertura de los tests.
+
+
+# Prueba implementada
+Librerías/utilidades empleadas en la implementación:
+
+- **Lombok**: para la autogeneración de código repetitivo (getters, setters, ...).
+- **Mapstruct**: para el mapeo entre objetos (típico para conversión DTO's / entidades). 
+- **AspectJ**: AOP para trazas de logs transversales.
+- **Springfox**: para para la especificación Swagger.
+- **JaCoCo**: para el análisis de cobertura de los tests 
+
+**Gestión de errores**: se ha implementado con RestControllerAdvice de Spring.
+
+**Página Swagger de la aplicación**: http://localhost:8080/swagger-ui/
+
+**Informes de cobertura de tests de JaCoCo**: se generan en la ruta _target/site/jacoco_
+
+
+**FUNCIONALIDADES PARA UNA APLICACIÓN REAL**
+
+En una aplicación real, generalmente se deberían implementar algunas de las siguientes funcionalidades (según los requisitos):
+- **Validación de datos de entrada**: realizar validación sobre los datos de entrada que aplique (por ejemplo validar NIF, formato de fechas, ...)
+- **Paginación de resultados**: en los endpoints que obtiene listas, realizar las consultas con paginación
+- **Gestión de errores mejorada**: gestión de errores genérica y con códigos de error
+- **Optimización de la base de datos**: creación de índices, ...
+- **Seguridad**: autenticación y autorización
+- **Caché**: espcialmente para la obtención de listados de objetos
+- **Monitorización/métricas**: recolección de datos para poder generar gráficas y alertas (por ejemplo con Prometheus y Grafana)
