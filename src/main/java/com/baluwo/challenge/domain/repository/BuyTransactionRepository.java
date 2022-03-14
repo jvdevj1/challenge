@@ -1,9 +1,9 @@
 package com.baluwo.challenge.domain.repository;
 
-import com.baluwo.challenge.domain.entity.BuyEntity;
+import com.baluwo.challenge.domain.entity.BuyTransactionEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface BuyRepository extends CrudRepository<BuyEntity, String> {
+public interface BuyTransactionRepository extends CrudRepository<BuyTransactionEntity, Integer> {
 }

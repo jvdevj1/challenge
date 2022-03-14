@@ -10,6 +10,6 @@ api:
     product:
       name: product
       mapping: /api/v1/product
-    buy:
-      name: buy
-      mapping: /api/v1/buy
+    buyTransaction:
+      name: buyTransaction
+      mapping: /api/v1/buy-transaction

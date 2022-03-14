@@ -8,8 +8,8 @@ import java.util.List;
 
 @Data
 @Builder
-@ApiModel(value = "Error", description = "Error DTO")
-public class RestErrorDTO {
+@ApiModel(value = "RestErrorApi", description = "Error")
+public class RestErrorApi {
     private Integer status;
     private String message;
     private List<String> errors;

@@ -21,6 +21,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class CustomerEntity {
     @Id
+    @Column(name = "ID_CUSTOMER")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 

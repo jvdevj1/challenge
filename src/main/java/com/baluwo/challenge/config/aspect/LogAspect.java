@@ -31,12 +31,12 @@ public class LogAspect {
         log.error("{}: Error in service - Input arguments: {} - {}", getClassAndMethod(joinPoint), getArgs(joinPoint), e.getMessage(), e);
     }
 
-    @Before("execution(* com.baluwo.challenge.app.rest.*.*(..)))")
+    @Before("execution(* com.baluwo.challenge.app.rest.impl.*.*(..)))")
     public void beforeLogController(JoinPoint joinPoint) {
         log.info("{}: Start - Input arguments: {}", getClassAndMethod(joinPoint), getArgs(joinPoint));
     }
 
-    @AfterReturning(pointcut = "execution(* com.baluwo.challenge.app.rest.*.*(..)))")
+    @AfterReturning(pointcut = "execution(* com.baluwo.challenge.app.rest.impl.*.*(..)))")
     public void afterSuccessLogController(JoinPoint joinPoint) {
         log.info("{}: Controller responds correctly - Input arguments: {}", getClassAndMethod(joinPoint), getArgs(joinPoint));
     }

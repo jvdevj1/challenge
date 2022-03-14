@@ -58,10 +58,12 @@ Librerías/utilidades empleadas en la implementación:
 **FUNCIONALIDADES PARA UNA APLICACIÓN REAL**
 
 En una aplicación real, generalmente se deberían implementar algunas de las siguientes funcionalidades (según los requisitos):
+- **Gestión mejorada de entidades**: entidad que represente una instancia de un producto en una transacción de compra, stock de productos, acciones para añadir/eliminar productos a transacciones de compras, ... 
 - **Validación de datos de entrada**: realizar validación sobre los datos de entrada que aplique (por ejemplo validar NIF, formato de fechas, ...)
 - **Paginación de resultados**: en los endpoints que obtiene listas, realizar las consultas con paginación
 - **Gestión de errores mejorada**: gestión de errores genérica y con códigos de error
 - **Optimización de la base de datos**: creación de índices, ...
+- **Gestión de cambios/migraciones de la base de datos**: mediante el uso de herramientas como Flyway o Liquibase, se pueded gestionar los cambios o migraciones de la base de datos
 - **Seguridad**: autenticación y autorización
-- **Caché**: espcialmente para la obtención de listados de objetos
+- **Caché**: especialmente para la obtención de listados de objetos
 - **Monitorización/métricas**: recolección de datos para poder generar gráficas y alertas (por ejemplo con Prometheus y Grafana)

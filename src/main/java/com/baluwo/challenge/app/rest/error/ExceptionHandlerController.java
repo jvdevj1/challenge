@@ -1,6 +1,6 @@
 package com.baluwo.challenge.app.rest.error;
 
-import com.baluwo.challenge.app.api.error.RestErrorDTO;
+import com.baluwo.challenge.app.api.error.RestErrorApi;
 import com.baluwo.challenge.exception.ResourceDuplicatedIdException;
 import com.baluwo.challenge.exception.ResourceNotFoundException;
 import lombok.extern.slf4j.Slf4j;
@@ -16,9 +16,9 @@ import java.util.Collections;
 public class ExceptionHandlerController {
     @ExceptionHandler(ResourceNotFoundException.class)
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
-    public RestErrorDTO handleResourceNotFoundException(ResourceNotFoundException ex) {
+    public RestErrorApi handleResourceNotFoundException(ResourceNotFoundException ex) {
         log.error(ex.getMessage());
-        return RestErrorDTO.builder()
+        return RestErrorApi.builder()
                 .status(HttpStatus.NOT_FOUND.value())
                 .message(ex.getMessage())
                 .errors(Collections.singletonList(HttpStatus.NOT_FOUND.getReasonPhrase()))
@@ -27,9 +27,9 @@ public class ExceptionHandlerController {
 
     @ExceptionHandler(ResourceDuplicatedIdException.class)
     @ResponseStatus(value = HttpStatus.CONFLICT)
-    public RestErrorDTO handleResourceDuplicatedIdException(ResourceDuplicatedIdException ex) {
+    public RestErrorApi handleResourceDuplicatedIdException(ResourceDuplicatedIdException ex) {
         log.error(ex.getMessage());
-        return RestErrorDTO.builder()
+        return RestErrorApi.builder()
                 .status(HttpStatus.CONFLICT.value())
                 .message(ex.getMessage())
                 .errors(Collections.singletonList(HttpStatus.CONFLICT.getReasonPhrase()))

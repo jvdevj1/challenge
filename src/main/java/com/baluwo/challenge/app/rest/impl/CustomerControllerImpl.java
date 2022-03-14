@@ -1,6 +1,7 @@
-package com.baluwo.challenge.app.rest;
+package com.baluwo.challenge.app.rest.impl;
 
 import com.baluwo.challenge.app.api.CustomerApi;
+import com.baluwo.challenge.app.rest.CustomerController;
 import com.baluwo.challenge.domain.entity.CustomerEntity;
 import com.baluwo.challenge.domain.mapper.CustomerMapper;
 import com.baluwo.challenge.domain.service.CustomerService;
@@ -15,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "${api.endpoints.customer.mapping}")
 @Slf4j
-public class CustomerControllerImpl extends CustomController implements CustomerController {
+public class CustomerControllerImpl implements CustomerController {
     private CustomerService customerService;
     private CustomerMapper customerMapper;
 
@@ -55,7 +56,7 @@ public class CustomerControllerImpl extends CustomController implements Customer
         } else {
             customerEntity.setId(customerId);
             customerEntityUpdated = customerService.update(customerEntity);
-            log.info("Customer with id {} not exists, it has been created", customerEntity);
+            log.info("Customer with id {} not exists, it has been created", customerId);
             return new ResponseEntity<>(customerMapper.toCustomerApi(customerEntityUpdated), HttpStatus.CREATED);
         }
     }

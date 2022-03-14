@@ -1,7 +1,7 @@
 package com.baluwo.challenge.app.rest;
 
 import com.baluwo.challenge.app.api.CustomerApi;
-import com.baluwo.challenge.app.api.error.RestErrorDTO;
+import com.baluwo.challenge.app.api.error.RestErrorApi;
 import com.baluwo.challenge.config.SwaggerConfiguration;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -19,34 +19,34 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@Api(value = "API of Baluwo challenge", tags = {"Baluwo challenge API"})
+@Api(value = "Customer API of Baluwo challenge", tags = {"Customer API"})
 public interface CustomerController {
-    @ApiOperation(tags = "Baluwo challenge API", value = "Find a customer by id.", notes = "If customer not exists, return error")
+    @ApiOperation(tags = "Customer API", value = "Find a customer by id.", notes = "If customer not exists, return error")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = SwaggerConfiguration.API_RESPONSE_200, response = CustomerApi.class),
-            @ApiResponse(code = 404, message = SwaggerConfiguration.API_RESPONSE_404, response = RestErrorDTO.class)
+            @ApiResponse(code = 404, message = SwaggerConfiguration.API_RESPONSE_404, response = RestErrorApi.class)
     })
     @GetMapping
             (path = "/{customerId}", produces = { MediaType.APPLICATION_JSON_VALUE })
     ResponseEntity<CustomerApi> findById(
             @ApiParam(value = "customerId", required = true) @PathVariable(value = "customerId") Integer customerId);
 
-    @ApiOperation(tags = "Baluwo challenge API", value = "Get all customers.", notes = "Get all customers.")
+    @ApiOperation(tags = "Customer API", value = "Get all customers.", notes = "Get all customers.")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = SwaggerConfiguration.API_RESPONSE_200, response = CustomerApi.class, responseContainer = "List")
     })
     @GetMapping(path = "", produces = { MediaType.APPLICATION_JSON_VALUE })
     ResponseEntity<List<CustomerApi>> findAll();
 
-    @ApiOperation(tags = "Baluwo challenge API", value = "Create a new customer.", notes = "Customer id must not exist (if id is provided).")
+    @ApiOperation(tags = "Customer API", value = "Create a new customer.", notes = "Customer id must not exist (if id is provided).")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = SwaggerConfiguration.API_RESPONSE_201, response = CustomerApi.class),
-            @ApiResponse(code = 409, message = SwaggerConfiguration.API_RESPONSE_409, response = RestErrorDTO.class)
+            @ApiResponse(code = 409, message = SwaggerConfiguration.API_RESPONSE_409, response = RestErrorApi.class)
     })
     @PostMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
     ResponseEntity<CustomerApi> create(@RequestBody CustomerApi customerApi);
 
-    @ApiOperation(tags = "Baluwo challenge API", value = "Replace or create a customer.", notes = "Replace a customer if its id exists, or create a new customer if its id not exists.")
+    @ApiOperation(tags = "Customer API", value = "Replace or create a customer.", notes = "Replace a customer if its id exists, or create a new customer if its id not exists.")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = SwaggerConfiguration.API_RESPONSE_200, response = CustomerApi.class),
             @ApiResponse(code = 201, message = SwaggerConfiguration.API_RESPONSE_201, response = CustomerApi.class)
@@ -56,11 +56,11 @@ public interface CustomerController {
             @ApiParam(value = "customerId", required = true) @PathVariable(value = "customerId") Integer customerId,
             @ApiParam(value = "customerApi", name = "customerApi", required = true) @RequestBody CustomerApi customerApi);
 
-    @ApiOperation(tags = "Baluwo challenge API", value = "Delete a customer by id.", notes = "If customer not exists, return error")
+    @ApiOperation(tags = "Customer API", value = "Delete a customer by id.", notes = "If customer not exists, return error")
     @ApiResponses(value = {
             @ApiResponse(code = 204, message = SwaggerConfiguration.API_RESPONSE_204),
-            @ApiResponse(code = 404, message = SwaggerConfiguration.API_RESPONSE_404, response = RestErrorDTO.class)
+            @ApiResponse(code = 404, message = SwaggerConfiguration.API_RESPONSE_404, response = RestErrorApi.class)
     })
-    @DeleteMapping(path = "/{customerId}", produces = { MediaType.APPLICATION_JSON_VALUE })
+    @DeleteMapping(path = "/{customerId}")
     ResponseEntity<Void> delete(@ApiParam(value = "customerId", required = true) @PathVariable(value = "customerId") Integer customerId);
 }
